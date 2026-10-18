@@ -137,7 +137,6 @@ h1 {
 .card[hidden] { display: none; }
 .card.escolhido { border-color: var(--verde-escuro); box-shadow: 0 0 0 1.5px var(--verde-escuro); }
 
-/* A foto fica dentro de um arco, como uma porta ou janela. */
 .foto {
   position: relative; overflow: hidden;
   aspect-ratio: 4 / 5;
