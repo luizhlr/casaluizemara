@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chá de Casa Nova - Luiz e Mara</title>
+  <meta name="description" content="Lista de presentes do chá de casa nova de Luiz e Mara. Escolha os itens que quiser.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#F2E3BD">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="topo">
+    <div class="miolo">
+      <span class="porta" aria-hidden="true"></span>
+      <h1>Chá de Casa Nova</h1>
+      <p class="casal">Luiz e Mara</p>
+      <p class="boas-vindas">Somos felizes em ter você nesta nova fase de nossas vidas e queremos compartilhar esse momento tão especial com você. Criamos esta lista de sugestões com muito carinho para montar nossa nova casa.</p>
+      <p class="como-funciona">Escolha os itens que quiser, informe seu nome e envie. Você pode escolher vários de uma vez.</p>
+    </div>
+  </header>
+
+  <main class="miolo principal">
+    <noscript><p class="aviso">Esta página precisa de JavaScript para funcionar. Ative-o no navegador ou abra o link em outro navegador.</p></noscript>
+
+    <section class="controles" aria-label="Buscar e filtrar">
+      <label class="campo-busca">
+        <span class="so-leitor">Buscar item pelo nome</span>
+        <input id="busca" type="search" placeholder="Buscar item (ex.: taça)" autocomplete="off" enterkeyhint="search">
+      </label>
+      <label class="opcao">
+        <input id="ocultar" type="checkbox">
+        <span>Ocultar itens já reservados</span>
+      </label>
+      <p id="contagem" class="contagem" aria-live="polite"></p>
+    </section>
+
+    <div id="estado" class="estado" role="status" aria-live="polite" hidden></div>
+
+    <ul id="grade" class="grade" aria-label="Lista de presentes"></ul>
+  </main>
+
+  <div id="barra" class="barra">
+    <div class="miolo barra-miolo">
+      <p id="resumo" class="resumo" aria-live="polite">Escolha os presentes da lista.</p>
+      <button id="btn-revisar" class="btn btn-primario" type="button" disabled>Revisar e enviar</button>
+    </div>
+  </div>
+
+  <dialog id="dlg" aria-labelledby="rev-titulo">
+    <!-- Vista 1: revisar e enviar -->
+    <form id="vista-revisar" class="folha" novalidate autocomplete="off">
+      <div class="folha-topo">
+        <h2 id="rev-titulo" tabindex="-1">Sua escolha</h2>
+        <button id="btn-fechar" class="btn-icone" type="button" aria-label="Fechar e voltar à lista">&times;</button>
+      </div>
+
+      <ul id="rev-lista" class="rev-lista"></ul>
+
+      <div class="campo">
+        <label for="f-nome">Seu nome (ou nomes, se for mais de uma pessoa)</label>
+        <input id="f-nome" name="nome" type="text" maxlength="80" required autocomplete="name" aria-describedby="erro-nome">
+        <p id="erro-nome" class="erro-campo" hidden></p>
+      </div>
+
+      <div class="campo">
+        <label for="f-msg">Mensagem para Luiz e Mara <span class="opcional">(opcional)</span></label>
+        <textarea id="f-msg" name="mensagem" rows="3" maxlength="500"></textarea>
+      </div>
+
+      <!-- Armadilha para robôs: pessoas não veem nem preenchem este campo -->
+      <div class="armadilha" aria-hidden="true">
+        <label for="f-site">Não preencha este campo</label>
+        <input id="f-site" name="website" type="text" tabindex="-1" autocomplete="off">
+      </div>
+
+      <div id="rev-erro" class="caixa-erro" role="alert" hidden></div>
+
+      <div class="acoes">
+        <button id="btn-voltar" class="btn btn-secundario" type="button">Voltar à lista</button>
+        <button id="btn-enviar" class="btn btn-primario" type="submit">Confirmar reserva</button>
+      </div>
+    </form>
+
+    <!-- Vista 2: confirmação -->
+    <div id="vista-sucesso" class="folha" hidden>
+      <div class="folha-topo">
+        <h2 id="ok-titulo" tabindex="-1">Obrigado!</h2>
+      </div>
+      <p id="ok-intro" class="ok-intro"></p>
+      <ul id="ok-lista" class="rev-lista"></ul>
+      <p class="ok-agradecimento">Muito obrigado pelo carinho! É uma alegria ter você nesta nova fase da nossa vida.</p>
+      <p class="ok-aviso">Se algo estiver errado, fale com Luiz ou Mara.</p>
+      <div class="acoes">
+        <button id="btn-ok" class="btn btn-primario" type="button">Voltar à lista</button>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>
